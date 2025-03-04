@@ -46,7 +46,7 @@ const Hero = ({ userDetails }) => {
               <span className="tracking-wider">Health</span>
             </h1>
           </div>
-          <div className="z-10 px-[20px] py-[20px] flex gap-[1vw]">
+          <div className="z-10 px-[20px] sm:px-[40px] py-[20px] flex gap-[1vw]">
             <Button />
             <Button2 />
           </div>
