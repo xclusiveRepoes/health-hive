@@ -34,7 +34,7 @@ const Hero = ({ userDetails }) => {
     } else {
       return (
         <div className="mt-[130px] flex flex-col items-end">
-          <div className="z-10 px-[20px] md:px-[30px]">
+          <div className="z-10 hero px-[20px] md:px-[30px]">
             <h1 className="text-[12.5vw] font-medium leading-[.9] uppercase text-end text-white md:text-[70px] lg:text-[90px]">
               {" "}
               <span className="md:tracking-[-7px] tracking-tighter mr-2">
@@ -58,7 +58,7 @@ const Hero = ({ userDetails }) => {
     <div className="relative w-full h-screen bg-black flex items-end justify-center flex-col">
       <img
         src={userDetails ? Img2 : Img}
-        className="absolute top-0 w-full h-full object-cover opacity-[.7] blur-[5px] "
+        className={`absolute top-0 w-full h-full object-cover opacity-[.7]  ${userDetails ? 'blur-[5px]' : 'blur-[2px]'}`}
         alt=""
       />
       {component()}
