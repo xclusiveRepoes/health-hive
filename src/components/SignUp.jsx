@@ -3,10 +3,11 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../firebase-config";
 import { setDoc, doc } from "firebase/firestore"; 
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 
-const SignUp = ({setIsClickedLogIn, setIsClickedSignUp}) => {
+const SignUp = () => {
   const [newUser, setNewUser] = useState({
     name: "",
     age: "",
@@ -49,8 +50,6 @@ const SignUp = ({setIsClickedLogIn, setIsClickedSignUp}) => {
         password: "",
         retypePass: "",
       })
-      setIsClickedSignUp(false)
-      setIsClickedLogIn(true)
     } else {
       toast.error("Password must be at least 6 characters long!", {
         position: "top-center",
@@ -137,7 +136,7 @@ const SignUp = ({setIsClickedLogIn, setIsClickedSignUp}) => {
           Sign up
         </button>
         <div>
-          <h1 className="text-[14px] text-center">Already have an account? <span onClick={() => {setIsClickedLogIn(true)}} className="text-green-500 cursor-pointer underline font-medium">Log in</span></h1>
+          <h1 className="text-[14px] text-center">Already have an account? <Link to={'/login'}><span className="text-green-500 cursor-pointer underline font-medium">Log in</span></Link></h1>
         </div>
       </form>
     </div>

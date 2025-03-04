@@ -14,7 +14,7 @@ const login = () => {
     e.preventDefault();
     try {
       await  signInWithEmailAndPassword(auth, user.email, user.password)
-      window.location.href = '/'
+      window.location.reload()
       toast.success('User logged in Sucessfully')
     }catch(error) {
       toast.error('Email or Password is incorrect')
