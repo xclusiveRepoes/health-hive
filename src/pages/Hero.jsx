@@ -12,7 +12,7 @@ const Hero = ({ userDetails }) => {
   const handleLogOut = async() => {
     try{
       await auth.signOut();
-      window.location.href = '/login';
+      window.location.reload()
     } catch(error) {
       console.log(error);
     }
