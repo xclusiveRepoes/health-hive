@@ -8,22 +8,26 @@ import Footer from "./components/Footer";
 import SideNav from "./components/SideNav";
 import NavBar from "./components/NavBar";
 import PersonalSession from "./pages/PersonalSession";
+import { useSelector } from "react-redux";
 
 const App = () => {
-  
+  const user = useSelector((state) => state.userSlice.user);
+
   return (
     <div className="bg-[#c8fcbe24] text-[#2C3E50]">
       <NavBar />
       <SideNav />
       <Hero />
-      <div className="">
-        <About />
-        <Services />
-        <PersonalSession />
-        <Blog />
-        <Seasonal />
-        <Footer />
-      </div>
+      {user.uid && (
+        <div className="">
+          <About />
+          <Services />
+          <PersonalSession />
+          <Blog />
+          <Seasonal />
+          <Footer />
+        </div>
+      )}
     </div>
   );
 };

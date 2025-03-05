@@ -53,6 +53,14 @@ const PersonalDetsShowcase = ({handleEdit}) => {
                   {userDetails.sugarLevel ? userDetails.sugarLevel : "----"}
                 </td>
               </tr>
+              <tr className="border-gray-600 border-[2px]">
+                <td className="border-r-[2px] border-gray-600 w-1/2">
+                  Blood Pressure
+                </td>
+                <td>
+                  {userDetails.bloodPressure ? userDetails.bloodPressure : "----"}
+                </td>
+              </tr>
               <tr className="border-gray-600 border-[2px] capitalize">
                 <td className="border-r-[2px] border-gray-600 w-1/2">
                   Family Diabetic History

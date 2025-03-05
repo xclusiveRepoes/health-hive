@@ -11,6 +11,7 @@ const userSlice = createSlice({
       sugarLevel: "",
       diabeticHistory: "",
       idUpdated: false,
+      uid: ''
     },
     isLoading: true,
     error: "",

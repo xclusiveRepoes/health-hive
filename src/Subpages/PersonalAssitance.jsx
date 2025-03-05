@@ -39,7 +39,7 @@ const PersonalAssitance = () => {
         <h1>
           Let's Check Your <span className="italic">Health</span>
         </h1>
-        <PersonalAssitantForm isEditClicked={isEditClicked} />
+        <PersonalAssitantForm isEditClicked={isEditClicked} setIsEditClicked={setIsEditClicked} />
         <PersonalDetsShowcase handleEdit={handleEdit} />
       </div>
     </div>

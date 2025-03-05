@@ -28,10 +28,12 @@ const Pagination = () => {
 
   const fetchUserData = async () => {
     auth.onAuthStateChanged(async (user) => {
-      const docRef = doc(db, "Users", user.uid);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        dispatch(addUser(docSnap.data()));
+      if(user){
+        const docRef = doc(db, "Users", user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          dispatch(addUser(docSnap.data()));
+        }
       }
     });
   };

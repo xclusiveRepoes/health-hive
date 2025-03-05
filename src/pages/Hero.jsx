@@ -24,10 +24,7 @@ const Hero = () => {
   }
 
   const component = () => {
-    if(isLoading) {
-      return <Loading />
-    }
-    if (user && !isLoading) {
+    if (user.uid ) {
       return (
         <div className="mt-[130px] flex flex-col items-end sm:px-[20px]">
           <div className="z-10 hero px-[20px] md:px-[30px] text-end">
@@ -65,7 +62,7 @@ const Hero = () => {
   return (
     <div className="relative w-full h-screen bg-black flex items-end justify-center flex-col">
       <img
-        src={user ? Img2 : Img}
+        src={user.uid ? Img2 : Img}
         className={`absolute top-0 w-full h-full object-cover opacity-[.7]  ${user ? 'blur-[5px]' : 'blur-[2px]'}`}
         alt=""
       />
