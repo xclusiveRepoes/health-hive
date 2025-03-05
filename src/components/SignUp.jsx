@@ -25,14 +25,18 @@ const SignUp = () => {
       try{
         await createUserWithEmailAndPassword(auth, newUser.email, newUser.password)
         const user = auth.currentUser;
-        console.log(user);
         if(user){
           await setDoc(doc(db, 'Users', user.uid), {
             name: newUser.name,
             email: user.email,
             age: newUser.age,
             uid: user.uid, 
-            password: newUser.password
+            password: newUser.password,
+            weight: '',
+            height: '',
+            bloodPressure: '',
+            sugarLevel: '',
+            diabeticHistory: '',
           })
         }
       }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import App from './App'
 import ImmunityBoost from './Subpages/ImmunityBoost'
@@ -17,8 +17,29 @@ import Contact from './components/Contact'
 import LogIn from './components/LogIn'
 import SignUp from './components/SignUp'
 import PersonalAssitance from './Subpages/PersonalAssitance'
+import { useDispatch } from 'react-redux'
+import { auth, db } from './firebase-config'
+import { doc, getDoc } from 'firebase/firestore'
+import { addUser } from './user/userSlice'
 
 const Pagination = () => {
+
+  const dispatch = useDispatch();
+
+  const fetchUserData = async () => {
+    auth.onAuthStateChanged(async (user) => {
+      const docRef = doc(db, "Users", user.uid);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        dispatch(addUser(docSnap.data()));
+      }
+    });
+  };
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
   return (
     <div>
       <BrowserRouter>

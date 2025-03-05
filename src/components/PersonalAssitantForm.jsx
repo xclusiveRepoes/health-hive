@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { auth, db } from "../firebase-config";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { db } from "../firebase-config";
+import { doc, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { updateUser } from "../user/userSlice";
 
-const PersonalAssitantForm = () => {
+const PersonalAssitantForm = ({isEditClicked}) => {
+  const dispatch = useDispatch();
+
   const [userDets, setUserDets] = useState({
     weight: "",
     height: "",
@@ -11,28 +15,26 @@ const PersonalAssitantForm = () => {
     sugarLevel: "",
     diabeticHistory: "",
   });
-
-  const [userDetails, setUserDetails] = useState(null);
-
-  const fetchUserData = async () => {
-    auth.onAuthStateChanged(async (user) => {
-      const docRef = doc(db, "Users", user.uid);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        setUserDetails(docSnap.data());
-      }
-    });
-  };
+  const userDetails = useSelector((state) => state.userSlice.user);
 
   useEffect(() => {
-    fetchUserData();
-  }, []);
+    if (isEditClicked) {
+      setUserDets({
+        weight: userDetails.weight,
+        height: userDetails.height,
+        bloodPressure: userDetails.bloodPressure,
+        sugarLevel: userDetails.sugarLevel,
+        diabeticHistory: userDetails.diabeticHistory,
+      });
+    }
+  }, [isEditClicked])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const userRef = doc(db, "Users", userDetails.uid);
       await updateDoc(userRef, { ...userDets });
+      dispatch(updateUser(userDets));
       toast.success("Your health data has been updated!", {
         position: "top-center",
         autoClose: 3000,
@@ -43,9 +45,10 @@ const PersonalAssitantForm = () => {
         bloodPressure: "",
         sugarLevel: "",
         diabeticHistory: "",
-      })
+      });
     } catch (error) {
-      toast.success("Failed to update health data!", {
+      console.log(error);
+      toast.error("Failed to update health data!", {
         position: "top-center",
         autoClose: 3000,
       });
@@ -62,21 +65,23 @@ const PersonalAssitantForm = () => {
     >
       <input
         type="text"
+        required
         value={userDets.weight}
         onChange={(e) =>
           setUserDets((prev) => ({ ...prev, weight: e.target.value }))
         }
         placeholder="Weight (kg)"
-        className="border-b-[2px] border-gray-500 outline-none py-[4px] w-[100%]"
+        className="border-b-[2px] border-gray-500 outline-none py-[4px] w-[100%] md:text-center"
       />
       <input
         type="text"
+        required
         value={userDets.height}
         onChange={(e) =>
           setUserDets((prev) => ({ ...prev, height: e.target.value }))
         }
-        placeholder="Height (meter)"
-        className="border-b-[2px] border-gray-500 outline-none py-[4px] w-[100%]"
+        placeholder="Height (m)"
+        className="border-b-[2px] border-gray-500 outline-none py-[4px] w-[100%] md:text-center"
       />
       <input
         type="text"
@@ -85,7 +90,7 @@ const PersonalAssitantForm = () => {
           setUserDets((prev) => ({ ...prev, bloodPressure: e.target.value }))
         }
         placeholder="Blood Pressure (optional)"
-        className="border-b-[2px] border-gray-500 outline-none py-[4px] w-[100%]"
+        className="border-b-[2px] border-gray-500 outline-none py-[4px] w-[100%] md:text-center"
       />
       <input
         type="text"
@@ -94,12 +99,13 @@ const PersonalAssitantForm = () => {
           setUserDets((prev) => ({ ...prev, sugarLevel: e.target.value }))
         }
         placeholder="Sugar Level (optional)"
-        className="border-b-[2px] border-gray-500 outline-none py-[4px] w-[100%]"
+        className="border-b-[2px] border-gray-500 outline-none py-[4px] w-[100%] md:text-center"
       />
       <div className="mt-[10px]">
         <label htmlFor="">Family Diabetic History</label>
         <div>
           <input
+            required
             type="radio"
             className=""
             id="yes"
@@ -116,6 +122,7 @@ const PersonalAssitantForm = () => {
             Yes
           </label>
           <input
+            required
             type="radio"
             className="ml-[15px]"
             id="no"

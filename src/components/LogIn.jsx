@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-import { auth } from '../firebase-config'
+import { auth, db } from '../firebase-config'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
@@ -20,6 +20,8 @@ const login = () => {
       toast.error('Email or Password is incorrect')
     }
   }
+
+
   return (
     <div className='w-full h-screen flex items-center justify-center bg-[#181818]'>
       <form onSubmit={(e) => {
