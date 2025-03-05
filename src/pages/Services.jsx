@@ -13,11 +13,11 @@ const Services = () => {
         {title: 'Immunity Boost: Strengthen Your Natural Defenses', desc: 'Build a resilient immune system with Immunity Boost. Discover expert tips, nutrition plans, and lifestyle programs designed to enhance your body’s natural defenses.', src: Img3, path: '/immunity-boost'},
     ]
   return (
-    <div className='services relative flex flex-col items-center justify-center'>
+    <div className='services relative flex flex-col items-center justify-center py-[100px]'>
         <img src={BG} className='absolute w-full h-full opacity-[.4] blur-[5px] top-0 left-0 object-cover -z-[1]' alt="" />
-        <div className='py-[60px] w-full text-[50px] md:text-[60px] leading-[1.1] tracking-tighter flex flex-col items-center justify-center text-center uppercase'>
-            <h1 className='font-medium'>Your Path</h1>
-            <h1 className='font-medium'>to <span className='font-normal italic'>Wellness</span></h1>
+        <div className='py-[20px] w-full text-[50px] md:text-[60px] leading-[1.1] tracking-tighter flex flex-col items-center justify-center text-center uppercase'>
+            <h1 className='font-medium hero'>Your Path</h1>
+            <h1 className='font-medium hero'>to <span className='font-normal diet '>Wellness</span></h1>
         </div>
         <div className='w-full lg:w-[80%] py-[30px] px-[20px] flex flex-wrap gap-[40px] lg:gap-[60px] justify-center'>
             {

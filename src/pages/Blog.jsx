@@ -9,9 +9,9 @@ const Blog = () => {
         {title: '5. Prioritize Quality Sleep', Desc: 'Aim for 7-9 hours of uninterrupted sleep. Create a bedtime routine, avoid screens before bed, and keep your sleeping environment calm and comfortable.'},
     ]
   return (
-    <div className='w-full flex flex-col items-center justify-center mt-[50px]'>
-        <div className='flex items-center justify-center flex-col'>
-            <h1 className='text-[40px] font-[500] py-[30px]'>Health Tips</h1>
+    <div className='w-full flex flex-col items-center justify-center bg-[#0000ff16] backdrop-blur-md py-[40px]'>
+        <div className='flex items-center justify-center flex-col py-[20px]'>
+            <h1 className='text-[40px] font-[500] py-[0px]'>Health Tips</h1>
             <h1 className='text-[25px] px-[15px]'>Five Daily Habits for Better Health:</h1>
         </div>
         <div className='w-full md:w-[80%] px-[20px] py-[20px] flex gap-[20px] flex-wrap justify-center'>

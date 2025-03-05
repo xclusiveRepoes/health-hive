@@ -35,9 +35,9 @@ const Hero = ({ userDetails }) => {
       return (
         <div className="mt-[130px] flex flex-col items-end">
           <div className="z-10 hero px-[20px] md:px-[30px]">
-            <h1 className="text-[12.5vw] font-medium leading-[.9] uppercase text-end text-white md:text-[70px] lg:text-[90px]">
+            <h1 className="text-[12.5vw] font-medium leading-[.9] capitalize text-end text-white md:text-[70px] lg:text-[90px]">
               {" "}
-              <span className="md:tracking-[-7px] tracking-tighter mr-2">
+              <span className="md:tracking-[-5px] tracking-tighter mr-2">
                 Empower
               </span>{" "}
               <br />

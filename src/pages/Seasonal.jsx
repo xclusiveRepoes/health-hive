@@ -5,8 +5,8 @@ import Img3 from '../assets/pexels-punttim-700535.webp'
 const Seasonal = () => {
   return (
     
-    <div className='w-full py-[40px] flex flex-col gap-[50px] px-2 bg-[#0000ff16] backdrop-blur-md rounded-t-[30px] mt-[40px]'>
-        <div className='flex justify-center '><h1 className='text-[40px] font-[500]'>Seasonal <span className='font-[200] italic'>Topics</span></h1></div>
+    <div className='w-full py-[40px] flex flex-col gap-[50px] px-2 mt-[40px]'>
+        <div className='flex justify-center '><h1 className='text-[45px] font-[500]'><span className='hero'>Seasonal</span> <span className='font-[200] diet italic'>Topics</span></h1></div>
         <div className='w-full flex items-center justify-center sm:justify-start'>
             <div className='w-[80%] flex flex-col sm:flex-row items-center justify-between'>
                 <div className='flex items-center justify-center w-full overflow-hidden'>

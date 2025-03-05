@@ -9,6 +9,7 @@ import SideNav from "./components/SideNav";
 import NavBar from "./components/NavBar";
 import { auth, db } from "./firebase-config";
 import { doc, getDoc } from "firebase/firestore";
+import PersonalSession from "./pages/PersonalSession";
 const App = () => {
   const [userDetails, setUserDetails] = useState(null)
 
@@ -21,7 +22,6 @@ const App = () => {
       }
     })
   }
-  console.log(userDetails);
 
   useEffect(() => {
     fetchUserData()
@@ -30,15 +30,16 @@ const App = () => {
   
 
   return (
-    <div className="">
+    <div className="bg-[#c8fcbe24] text-[#2C3E50]">
       {userDetails && <NavBar />}
       <SideNav />
       <Hero userDetails={userDetails} />
       {
         userDetails && (
-          <div>
+          <div className="">
             <About />
             <Services />
+            <PersonalSession />
             <Blog />
             <Seasonal />
             <Footer />
