@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import Loading from "./Loading";
 
-const PersonalDetsShowcase = ({handleEdit}) => {
+const PersonalDetsShowcase = ({ handleEdit }) => {
   const userDetails = useSelector((state) => state.userSlice.user);
   const isLoading = useSelector((state) => state.userSlice.isLoading);
   const handleClick = () => {
     handleEdit(true);
-  }
+  };
   return (
     <>
       {isLoading ? (
@@ -26,7 +26,7 @@ const PersonalDetsShowcase = ({handleEdit}) => {
               <tr className="border-gray-600 border-[2px]">
                 <td className="border-r-[2px] border-gray-600 w-1/2">Height</td>
                 <td>
-                  {userDetails?.height ? `${userDetails.height} meter` : "----"}
+                  {userDetails?.height ? `${userDetails.height} feet` : "----"}
                 </td>
               </tr>
               <tr className="border-gray-600 border-[2px]">
@@ -36,7 +36,7 @@ const PersonalDetsShowcase = ({handleEdit}) => {
                     <span>
                       {(
                         Number(userDetails.weight) /
-                        Number(userDetails.height) ** 2
+                        (Number(userDetails.height) * 0.3048) ** 2
                       ).toFixed(2)}{" "}
                       kg/m<sup>2</sup>
                     </span>
@@ -58,7 +58,9 @@ const PersonalDetsShowcase = ({handleEdit}) => {
                   Blood Pressure
                 </td>
                 <td>
-                  {userDetails.bloodPressure ? userDetails.bloodPressure : "----"}
+                  {userDetails.bloodPressure
+                    ? userDetails.bloodPressure
+                    : "----"}
                 </td>
               </tr>
               <tr className="border-gray-600 border-[2px] capitalize">
@@ -73,7 +75,12 @@ const PersonalDetsShowcase = ({handleEdit}) => {
               </tr>
             </tbody>
           </table>
-          <button onClick={handleClick} className="w-full bg-gray-500 mt-[20px] py-[6px] font-medium text-white rounded-md">Edit</button>
+          <button
+            onClick={handleClick}
+            className="w-full bg-gray-500 mt-[20px] py-[6px] font-medium text-white rounded-md"
+          >
+            Edit
+          </button>
         </div>
       )}
     </>

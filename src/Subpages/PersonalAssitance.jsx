@@ -3,6 +3,8 @@ import { auth, db } from "../firebase-config";
 import { doc, getDoc } from "firebase/firestore";
 import PersonalAssitantForm from "../components/PersonalAssitantForm";
 import PersonalDetsShowcase from "../components/PersonalDetsShowcase";
+import HealthAnalysis from "../components/HealthAnalysis";
+import DietChart from "../components/DietChart";
 
 const PersonalAssitance = () => {
   const [userDetails, setUserDetails] = useState(null);
@@ -41,6 +43,8 @@ const PersonalAssitance = () => {
         </h1>
         <PersonalAssitantForm isEditClicked={isEditClicked} setIsEditClicked={setIsEditClicked} />
         <PersonalDetsShowcase handleEdit={handleEdit} />
+        <HealthAnalysis />
+        <DietChart />
       </div>
     </div>
   );

@@ -65,7 +65,7 @@ const PersonalAssitantForm = ({isEditClicked, setIsEditClicked}) => {
       className="py-[15px] flex flex-col gap-[8px]"
     >
       <input
-        type="text"
+        type="number"
         required
         value={userDets.weight}
         onChange={(e) =>
@@ -75,17 +75,17 @@ const PersonalAssitantForm = ({isEditClicked, setIsEditClicked}) => {
         className="bg-transparent border-b-[2px] border-gray-500 outline-none py-[4px] w-[100%] md:text-center"
       />
       <input
-        type="text"
+        type="number"
         required
         value={userDets.height}
         onChange={(e) =>
           setUserDets((prev) => ({ ...prev, height: e.target.value }))
         }
-        placeholder="Height (m)"
+        placeholder="Height (feet)"
         className="bg-transparent border-b-[2px] border-gray-500 outline-none py-[4px] w-[100%] md:text-center"
       />
       <input
-        type="text"
+        type="number"
         value={userDets.bloodPressure}
         onChange={(e) =>
           setUserDets((prev) => ({ ...prev, bloodPressure: e.target.value }))
@@ -94,7 +94,7 @@ const PersonalAssitantForm = ({isEditClicked, setIsEditClicked}) => {
         className="bg-transparent border-b-[2px] border-gray-500 outline-none py-[4px] w-[100%] md:text-center"
       />
       <input
-        type="text"
+        type="number"
         value={userDets.sugarLevel}
         onChange={(e) =>
           setUserDets((prev) => ({ ...prev, sugarLevel: e.target.value }))
