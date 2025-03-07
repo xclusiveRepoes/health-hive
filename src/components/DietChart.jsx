@@ -29,8 +29,8 @@ const DietChart = () => {
 
   const getSugarDiet = () => {
     const sugar = Number(userDetails.sugarLevel);
-    if (sugar < 70) return lowSugar;
-    if (sugar >= 70 && sugar <= 140) return normalSugar;
+    if (sugar < 4.4) return lowSugar;
+    if (sugar >= 4.4 && sugar <= 7.8) return normalSugar;
     return highSugar;
   };
 
@@ -61,6 +61,27 @@ const DietChart = () => {
             <tr className="border-2 border-gray-600">
               <td className="border-r-2 border-gray-600">Blood Pressure-Based</td>
               <td>{userDetails.bloodPressure ? getBloodPressureDiet().breakfast : "----"}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      {/* Extra Lunch Table */}
+      <div className="border-2 border-gray-600 p-5 mb-5">
+        <h2 className="text-lg font-medium mb-3">🍛 Extra Lunch</h2>
+        <table className="w-full border-2 border-gray-600 text-center">
+          <tbody>
+            <tr className="border-2 border-gray-600">
+              <td className="border-r-2 border-gray-600 w-1/3">Weight-Based</td>
+              <td>{userDetails.weight ? getWeightDiet().lunch : "----"}</td>
+            </tr>
+            <tr className="border-2 border-gray-600">
+              <td className="border-r-2 border-gray-600">Sugar Level-Based</td>
+              <td>{userDetails.sugarLevel ? getSugarDiet().lunch : "----"}</td>
+            </tr>
+            <tr className="border-2 border-gray-600">
+              <td className="border-r-2 border-gray-600">Blood Pressure-Based</td>
+              <td>{userDetails.bloodPressure ? getBloodPressureDiet().lunch : "----"}</td>
             </tr>
           </tbody>
         </table>

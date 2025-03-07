@@ -30,7 +30,7 @@ const HealthAnalysis = () => {
         haveTo: "To Gain",
         acieve: Math.abs(weightToLoseOrGain).toFixed(2),
       }));
-    } else if (bmi > 18.5 && bmi < 24.9) {
+    } else if (bmi >= 18.5 && bmi < 24.9) {
       setCondition((prev) => ({
         ...prev,
         weightC: "Perfect Weight",
@@ -38,7 +38,7 @@ const HealthAnalysis = () => {
         haveTo: "Nothing",
         acieve: Math.abs(weightToLoseOrGain).toFixed(2),
       }));
-    } else if (bmi > 24.5 && bmi < 29.5) {
+    } else if (bmi >= 24.5 && bmi < 29.5) {
       setCondition((prev) => ({
         ...prev,
         weightC: "Over Weight",
@@ -46,7 +46,7 @@ const HealthAnalysis = () => {
         haveTo: "To Loss",
         acieve: Math.abs(weightToLoseOrGain).toFixed(2),
       }));
-    } else if (bmi > 29.5) {
+    } else if (bmi >= 29.5) {
       setCondition((prev) => ({
         ...prev,
         weightC: "Extra Over Weight",
@@ -63,8 +63,8 @@ const HealthAnalysis = () => {
         sugarColor: "bg-[#87CEEB]",
       }));
     } else if (
-      Number(userDetails.sugarLevel) > 4.4 &&
-      Number(userDetails.sugarLevel) < 7.8
+      Number(userDetails.sugarLevel) >= 4.4 &&
+      Number(userDetails.sugarLevel) < 8
     ) {
       setCondition((prev) => ({
         ...prev,
@@ -72,7 +72,7 @@ const HealthAnalysis = () => {
         sugarColor: "bg-[#32CD32]",
       }));
     } else if (
-      Number(userDetails.sugarLevel) > 7.8 &&
+      Number(userDetails.sugarLevel) >= 8 &&
       Number(userDetails.sugarLevel) < 11
     ) {
       setCondition((prev) => ({
@@ -81,7 +81,7 @@ const HealthAnalysis = () => {
         sugarColor: "bg-[#FFA500]",
       }));
     }else if (
-      Number(userDetails.sugarLevel) > 11
+      Number(userDetails.sugarLevel) >= 11
     ) {
       setCondition((prev) => ({
         ...prev,
