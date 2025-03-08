@@ -1,46 +1,62 @@
 import React, { useEffect, useState } from 'react'
 
+import { AiOutlineEyeInvisible } from "react-icons/ai";
+import { FaEye } from "react-icons/fa";
+
 import { auth, db } from '../firebase-config'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { toast } from 'react-toastify'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { logIn } from '../user/userSlice'
 const login = () => {
   const [user, setUser] = useState({
     email: '',
     password: ''
   })
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const [isClick, setIsClick] = useState(false)
+
   
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch(logIn()); // Set isLoading to true
+  
     try {
-      await  signInWithEmailAndPassword(auth, user.email, user.password)
-      window.location.href = '/'
-      toast.success('User logged in Sucessfully')
-    }catch(error) {
-      toast.error('Email or Password is incorrect')
+      await signInWithEmailAndPassword(auth, user.email, user.password);
+      toast.success("User logged in successfully");
+      navigate('/')
+    } catch (error) {
+      dispatch({ type: "user/logOut" }); // Reset loading state on failure
+      toast.error("Email or Password is incorrect");
     }
-  }
+  };
+
 
 
   return (
-    <div className='w-full h-screen flex items-center justify-center bg-[#181818]'>
+    <div className='w-full h-screen flex items-center justify-center flex-col bg-[#0A0A16] text-[white]' >
       <form onSubmit={(e) => {
         handleSubmit(e)
-      }} action="" className='px-[40px] py-[40px] border border-[#797979] rounded-xl flex flex-col gap-[15px]'>
+      }} action="" className='px-[40px] py-[40px] border-[2px] border-[#797979] rounded-xl flex flex-col gap-[15px]'>
+        <h1 className='text-center pb-[10px]'>Log in your account</h1>
         <div>
           <input
           value={user.email}
           onChange={(e) => setUser((prev) => ({...prev, email: e.target.value}))}
-          type="text" className='bg-transparent border border-gray-500 px-[10px] py-[5px] rounded-md text-white outline-none text-[15px] w-[230px]' placeholder='E-mail' />
+          type="text" className='bg-transparent border-b border-gray-500 py-[5px] outline-none text-[15px] w-[230px]' placeholder='E-mail' />
         </div>
-        <div>
+        <div className='w-fit relative'>
           <input
           value={user.password}
           onChange={(e) => setUser((prev) => ({...prev, password: e.target.value}))}
-          type="password" className='bg-transparent border border-gray-500 px-[10px] py-[5px] rounded-md text-white outline-none text-[15px] w-[230px]' placeholder='Password' />
+          type={isClick ? 'text' : 'password'} className='bg-transparent border-b border-gray-500 py-[5px] outline-none text-[15px] w-[230px]' placeholder='Password' />
+          <span onClick={() => {setIsClick(!isClick)}} className='absolute right-2 cursor-pointer top-1/2 -translate-y-1/2 text-[#d5d5d5]'>{isClick ? <AiOutlineEyeInvisible /> : <FaEye />}</span>
         </div>
-        <button type='submit' className='w-full bg-green-600 text-white py-[7px] rounded-md'>Log In</button>
-        <h1 className='text-white text-center '>Don't have an account? <br /><Link to={'/signUp'}><span className='underline cursor-pointer'>Sign Up</span></Link></h1>
+        <button type='submit' className='w-full bg-[#555555a2] text-[#D5A121] py-[5px] rounded-md'>Log In</button>
+        <h1 className='text-center '>Don't have an account? <br /><Link to={'/signUp'}><span className='underline cursor-pointer font-medium text-[#D5A121]'>Sign Up</span></Link></h1>
       </form>
     </div>
   )

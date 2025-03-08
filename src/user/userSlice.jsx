@@ -13,7 +13,7 @@ const userSlice = createSlice({
       idUpdated: false,
       uid: ''
     },
-    isLoading: true,
+    isLoading: false,
     error: "",
   },
   reducers: {
@@ -53,10 +53,14 @@ const userSlice = createSlice({
         };
         state.isLoading = false;
         state.isUpdated = true;
+    },
+    logIn : (state, action) => {
+      state.user = state.user;
+      state.isLoading = true
     }
   },
 });
 
-export const { addUser, updateUser, logOut } = userSlice.actions;
+export const { addUser, updateUser, logOut, logIn } = userSlice.actions;
 
 export default userSlice.reducer;

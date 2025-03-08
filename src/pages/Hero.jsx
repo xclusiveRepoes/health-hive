@@ -7,17 +7,19 @@ import { auth } from "../firebase-config";
 import Img2 from './bg.webp'
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../components/Loading";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
 
   const {user, isLoading} = useSelector((state) => state.userSlice);
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const handleLogOut = async() => {
     try{
       await auth.signOut();
       dispatch(LogOut());
-      window.location.href = '/login';
+      navigate('/login')
     } catch(error) {
       console.log(error);
     }

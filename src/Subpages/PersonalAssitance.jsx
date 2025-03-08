@@ -29,7 +29,7 @@ const PersonalAssitance = () => {
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#c8fcbe24] px-[40px] py-[20px] text-[#2C3E50]">
+    <div className="w-full min-h-screen bg-[#c8fcbe24] px-[40px] py-[20px] text-[#2C3E50] pt-[80px]">
       <h1 className="capitalize hero text-[35px]">
         <span className="italic mr-[5px]">Hi</span>{" "}
         {userDetails && userDetails.name}

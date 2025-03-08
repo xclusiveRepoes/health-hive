@@ -45,7 +45,7 @@ const DietChart = () => {
     <div className="w-full">
       <h1 className="py-5 text-xl font-semibold text-center">Diet Chart</h1>
 
-      {/* Breakfast Table */}
+
       <div className="border-2 border-gray-600 p-5 mb-5">
         <h2 className="text-lg font-medium mb-3">🍳 Breakfast</h2>
         <table className="w-full border-2 border-gray-600 text-center">
@@ -66,7 +66,7 @@ const DietChart = () => {
         </table>
       </div>
 
-      {/* Extra Lunch Table */}
+
       <div className="border-2 border-gray-600 p-5 mb-5">
         <h2 className="text-lg font-medium mb-3">🍛 Extra Lunch</h2>
         <table className="w-full border-2 border-gray-600 text-center">
@@ -87,7 +87,7 @@ const DietChart = () => {
         </table>
       </div>
 
-      {/* Lunch Table */}
+
       <div className="border-2 border-gray-600 p-5 mb-5">
         <h2 className="text-lg font-medium mb-3">🍛 Lunch</h2>
         <table className="w-full border-2 border-gray-600 text-center">
@@ -108,7 +108,7 @@ const DietChart = () => {
         </table>
       </div>
 
-      {/* Dinner Table */}
+
       <div className="border-2 border-gray-600 p-5">
         <h2 className="text-lg font-medium mb-3">🍽️ Dinner</h2>
         <table className="w-full border-2 border-gray-600 text-center">

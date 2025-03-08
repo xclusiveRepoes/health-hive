@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../user/userSlice";
 
-const PersonalAssitantForm = ({isEditClicked, setIsEditClicked}) => {
+const PersonalAssitantForm = ({ isEditClicked, setIsEditClicked }) => {
   const dispatch = useDispatch();
 
   const [userDets, setUserDets] = useState({
@@ -27,7 +27,7 @@ const PersonalAssitantForm = ({isEditClicked, setIsEditClicked}) => {
         diabeticHistory: userDetails.diabeticHistory,
       });
     }
-  }, [isEditClicked])
+  }, [isEditClicked]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,7 +35,7 @@ const PersonalAssitantForm = ({isEditClicked, setIsEditClicked}) => {
       const userRef = doc(db, "Users", userDetails.uid);
       await updateDoc(userRef, { ...userDets });
       dispatch(updateUser(userDets));
-      setIsEditClicked(false)
+      setIsEditClicked(false);
       toast.success("Your health data has been updated!", {
         position: "top-center",
         autoClose: 3000,
@@ -99,7 +99,7 @@ const PersonalAssitantForm = ({isEditClicked, setIsEditClicked}) => {
         onChange={(e) =>
           setUserDets((prev) => ({ ...prev, sugarLevel: e.target.value }))
         }
-        placeholder="Sugar Level (optional)"
+        placeholder="Sugar Level (2 hours after meal) (optional)"
         className="bg-transparent border-b-[2px] border-gray-500 outline-none py-[4px] w-[100%] md:text-center"
       />
       <div className="mt-[10px]">
