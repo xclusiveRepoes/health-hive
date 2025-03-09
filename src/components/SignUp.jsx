@@ -8,7 +8,9 @@ import { FaEye } from "react-icons/fa";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logOut } from "../user/userSlice";
 
 const SignUp = () => {
   const [newUser, setNewUser] = useState({
@@ -18,46 +20,49 @@ const SignUp = () => {
     password: "",
     retypePass: "",
   });
+  const navigate = useNavigate()
 
   const [isClick, setIsClick] = useState(false);
   const [isClickTwo, setIsClickTwo] = useState(false);
+  const dispatch = useDispatch()
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (
-      newUser.password === newUser.retypePass &&
-      newUser.password.length >= 6
-    ) {
+  
+    if (newUser.password === newUser.retypePass && newUser.password.length >= 6) {
       try {
-        await createUserWithEmailAndPassword(
-          auth,
-          newUser.email,
-          newUser.password
-        );
+        await createUserWithEmailAndPassword(auth, newUser.email, newUser.password);
         const user = auth.currentUser;
+  
         if (user) {
           await setDoc(doc(db, "Users", user.uid), {
             name: newUser.name,
             email: user.email,
             age: newUser.age,
             uid: user.uid,
-            password: newUser.password,
             weight: "",
             height: "",
             bloodPressure: "",
             sugarLevel: "",
             diabeticHistory: "",
           });
+          navigate('/logIn');
+          dispatch(logOut())
         }
       } catch (err) {
         console.error(err);
+        toast.error("Something went wrong. Try again!", {
+          position: "top-center",
+          autoClose: 3000,
+        });
       }
+  
       toast.success("User created successfully!", {
         position: "top-center",
         autoClose: 3000,
       });
+  
       setNewUser({
         name: "",
         age: "",
@@ -71,6 +76,7 @@ const SignUp = () => {
         autoClose: 3000,
       });
     }
+  
     if (newUser.password !== newUser.retypePass) {
       toast.error("Passwords did not match!", {
         position: "top-center",
@@ -78,6 +84,7 @@ const SignUp = () => {
       });
     }
   };
+  
 
   return (
     <div className="w-full h-screen flex items-center justify-center bg-[#0A0A16] text-white">

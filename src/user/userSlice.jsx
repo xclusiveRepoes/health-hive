@@ -11,7 +11,7 @@ const userSlice = createSlice({
       sugarLevel: "",
       diabeticHistory: "",
       idUpdated: false,
-      uid: ''
+      uid: "",
     },
     isLoading: false,
     error: "",
@@ -20,7 +20,7 @@ const userSlice = createSlice({
     addUser: (state, action) => {
       state.user = {
         ...state.user,
-        uid: action.payload.uid, 
+        uid: action.payload.uid,
         name: action.payload.name,
         weight: action.payload.weight,
         height: action.payload.height,
@@ -32,32 +32,35 @@ const userSlice = createSlice({
       state.isUpdated = false;
     },
 
-    logOut: (state, action) => {
-      state.user.name = "";
-      state.user.weight = "";
-      state.user.height = "";
-      state.user.bloodPressure = "";
-      state.user.sugarLevel = "";
-      state.user.diabeticHistory = "";
+    logOut: (state) => {
+      state.user = {
+        name: "",
+        weight: "",
+        height: "",
+        bloodPressure: "",
+        sugarLevel: "",
+        diabeticHistory: "",
+        uid: "",
+      };
       state.isLoading = false;
       state.isUpdated = false;
     },
     updateUser: (state, action) => {
-        state.user = {
-            ...state.user,
-            weight: action.payload.weight,
-            height: action.payload.height, 
-            bloodPressure: action.payload.bloodPressure,
-            sugarLevel: action.payload.sugarLevel,
-            diabeticHistory: action.payload.diabeticHistory,
-        };
-        state.isLoading = false;
-        state.isUpdated = true;
+      state.user = {
+        ...state.user,
+        weight: action.payload.weight,
+        height: action.payload.height,
+        bloodPressure: action.payload.bloodPressure,
+        sugarLevel: action.payload.sugarLevel,
+        diabeticHistory: action.payload.diabeticHistory,
+      };
+      state.isLoading = false;
+      state.isUpdated = true;
     },
-    logIn : (state, action) => {
+    logIn: (state, action) => {
       state.user = state.user;
-      state.isLoading = true
-    }
+      state.isLoading = true;
+    },
   },
 });
 

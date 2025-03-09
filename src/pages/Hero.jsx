@@ -6,8 +6,8 @@ import LogOut from "../components/LogOut";
 import { auth } from "../firebase-config";
 import Img2 from './bg.webp'
 import { useDispatch, useSelector } from "react-redux";
-import Loading from "../components/Loading";
 import { useNavigate } from "react-router-dom";
+import { logOut } from "../user/userSlice";
 
 const Hero = () => {
 
@@ -18,7 +18,7 @@ const Hero = () => {
   const handleLogOut = async() => {
     try{
       await auth.signOut();
-      dispatch(LogOut());
+      dispatch(logOut());
       navigate('/login')
     } catch(error) {
       console.log(error);

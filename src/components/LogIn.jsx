@@ -8,7 +8,8 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import { toast } from 'react-toastify'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
-import { logIn } from '../user/userSlice'
+import { addUser, logIn } from '../user/userSlice'
+import { doc, getDoc } from 'firebase/firestore';
 const login = () => {
   const [user, setUser] = useState({
     email: '',
@@ -19,17 +20,30 @@ const login = () => {
 
   const [isClick, setIsClick] = useState(false)
 
+    const fetchUserData = async () => {
+      auth.onAuthStateChanged(async (user) => {
+        if (user) {
+          const docRef = doc(db, "Users", user.uid);
+          const docSnap = await getDoc(docRef);
+          if (docSnap.exists()) {
+            dispatch(addUser(docSnap.data()));
+          }
+        }
+      });
+    };
+
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(logIn()); // Set isLoading to true
+    dispatch(logIn());
   
     try {
       await signInWithEmailAndPassword(auth, user.email, user.password);
+      fetchUserData();
       toast.success("User logged in successfully");
       navigate('/')
     } catch (error) {
-      dispatch({ type: "user/logOut" }); // Reset loading state on failure
+      dispatch({ type: "user/logOut" });
       toast.error("Email or Password is incorrect");
     }
   };

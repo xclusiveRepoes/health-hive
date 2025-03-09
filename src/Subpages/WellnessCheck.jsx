@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const WellnessCheck = () => {
   return (
     <div className="bg-gray-50 py-10 px-6 md:px-20 mt-[50px]">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold text-green-600 mb-6">
+        <h1 className="text-4xl font-bold text-blue-600 mb-6">
           Wellness Check: Your Personalized Health Assessment
         </h1>
         <p className="text-gray-700 mb-8">
@@ -18,17 +19,28 @@ const WellnessCheck = () => {
 
         {/* Comprehensive Health Assessment */}
         <div className="mb-8">
-          <h2 className="text-2xl font-semibold text-green-500 mb-4">
+          <h2 className="text-2xl font-semibold text-blue-500 mb-4">
             Comprehensive Health Assessment
           </h2>
           <ul className="list-disc list-inside text-gray-700 space-y-2">
-            <li>Evaluate energy levels, sleep quality, and stress management.</li>
+            <li>
+              Evaluate energy levels, sleep quality, and stress management.
+            </li>
             <li>
               Measure vital indicators like:
               <ul className="list-disc list-inside ml-6 mt-2 space-y-2">
-                <li><strong>Body Mass Index (BMI):</strong> Determine if your weight is in a healthy range.</li>
-                <li><strong>Blood Pressure:</strong> Monitor cardiovascular health by measuring systolic and diastolic pressure.</li>
-                <li><strong>Diabetes Risk:</strong> Assess potential risks based on blood sugar levels and lifestyle.</li>
+                <li>
+                  <strong>Body Mass Index (BMI):</strong> Determine if your
+                  weight is in a healthy range.
+                </li>
+                <li>
+                  <strong>Blood Pressure:</strong> Monitor cardiovascular health
+                  by measuring systolic and diastolic pressure.
+                </li>
+                <li>
+                  <strong>Diabetes Risk:</strong> Assess potential risks based
+                  on blood sugar levels and lifestyle.
+                </li>
               </ul>
             </li>
           </ul>
@@ -36,7 +48,7 @@ const WellnessCheck = () => {
 
         {/* Personalized Recommendations */}
         <div className="mb-8">
-          <h2 className="text-2xl font-semibold text-green-500 mb-4">
+          <h2 className="text-2xl font-semibold text-blue-500 mb-4">
             Personalized Recommendations
           </h2>
           <p className="text-gray-700">
@@ -48,7 +60,7 @@ const WellnessCheck = () => {
 
         {/* Progress Tracking */}
         <div className="mb-8">
-          <h2 className="text-2xl font-semibold text-green-500 mb-4">
+          <h2 className="text-2xl font-semibold text-blue-500 mb-4">
             Progress Tracking
           </h2>
           <p className="text-gray-700">
@@ -60,20 +72,24 @@ const WellnessCheck = () => {
 
         {/* Benefits Section */}
         <div className="mb-8">
-          <h2 className="text-2xl font-semibold text-green-500 mb-4">
+          <h2 className="text-2xl font-semibold text-blue-500 mb-4">
             Benefits of Wellness Check
           </h2>
           <ul className="list-disc list-inside text-gray-700 space-y-2">
-            <li>Understand your current health status and its impact on your life.</li>
+            <li>
+              Understand your current health status and its impact on your life.
+            </li>
             <li>Get expert-backed recommendations to enhance well-being.</li>
-            <li>Stay motivated by tracking progress and celebrating milestones.</li>
+            <li>
+              Stay motivated by tracking progress and celebrating milestones.
+            </li>
             <li>Convenient and quick assessments anytime, anywhere.</li>
           </ul>
         </div>
 
         {/* Call to Action */}
         <div className="bg-green-100 p-6 rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold text-green-600 mb-4">
+          <h2 className="text-2xl font-bold text-blue-600 mb-4">
             Take Charge of Your Health Today!
           </h2>
           <p className="text-gray-700 mb-4">
@@ -81,9 +97,11 @@ const WellnessCheck = () => {
             BMI, blood pressure, and diabetes risk. Empower yourself with the
             knowledge to lead a healthier, happier life.
           </p>
-          <button className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-500">
-            Start Your Assessment
-          </button>
+          <Link to={'/personalAssitant'}>
+            <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-green-500">
+              Start Your Assessment
+            </button>
+          </Link>
         </div>
       </div>
     </div>

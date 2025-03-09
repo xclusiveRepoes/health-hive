@@ -68,7 +68,7 @@ const DietChart = () => {
 
 
       <div className="border-2 border-gray-600 p-5 mb-5">
-        <h2 className="text-lg font-medium mb-3">🍛 Extra Lunch</h2>
+        <h2 className="text-lg font-medium mb-3">🍛 Snacks</h2>
         <table className="w-full border-2 border-gray-600 text-center">
           <tbody>
             <tr className="border-2 border-gray-600">
