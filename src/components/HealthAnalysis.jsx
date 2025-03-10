@@ -16,7 +16,7 @@ const HealthAnalysis = () => {
   let bmi =
     Number(userDetails.weight) / (Number(userDetails.height) * 0.3048) ** 2;
 
-  const heightInMeters = Number(userDetails.height) * 0.3048; // Convert feet to meters
+  const heightInMeters = Number(userDetails.height) * 0.3048;
   const currentWeight = Number(bmi) * heightInMeters ** 2;
   const idealWeight = 24.9 * heightInMeters ** 2;
   const weightToLoseOrGain = currentWeight - idealWeight;
@@ -89,48 +89,6 @@ const HealthAnalysis = () => {
         sugarColor: "bg-[#FF4500]",
       }));
     }
-
-    if (Number(userDetails.bloodPressure) < 90) {
-      setCondition((prev) => ({
-        ...prev,
-        bp: "Low",
-        bpColor: "bg-[#87CEEB]",
-      }));
-    } else if (
-      Number(userDetails.bloodPressure) >= 90 &&
-      Number(userDetails.bloodPressure) < 120
-    ) {
-      setCondition((prev) => ({
-        ...prev,
-        bp: "Normal",
-        bpColor: "bg-[#32CD32]",
-      }));
-    } else if (
-      Number(userDetails.bloodPressure) >= 120 &&
-      Number(userDetails.bloodPressure) < 130
-    ) {
-      setCondition((prev) => ({
-        ...prev,
-        bp: "Elevated",
-        bpColor: "bg-[#FFA500]",
-      }));
-    } else if (
-      Number(userDetails.bloodPressure) >= 130 &&
-      Number(userDetails.bloodPressure) < 140
-    ) {
-      setCondition((prev) => ({
-        ...prev,
-        bp: "High",
-        bpColor: "bg-[#FF4500]",
-      }));
-    } else if (Number(userDetails.bloodPressure) >= 140) {
-      setCondition((prev) => ({
-        ...prev,
-        bp: "Too High",
-        bpColor: "bg-[#8B0000]",
-      }));
-    }
-    
   };
   useEffect(() => {
     analysis();
@@ -161,14 +119,6 @@ const HealthAnalysis = () => {
               Sugar Level
             </td>
             <td className={`${condition.sugarColor} text-white`}>{userDetails.sugarLevel ? condition.sugar : "----"}</td>
-          </tr>
-          <tr className="border-gray-600 border-[2px]">
-            <td className="border-r-[2px] border-gray-600 w-1/2">
-              Blood Pressure
-            </td>
-            <td className={`${condition.bpColor} text-white`}>
-              {userDetails.bloodPressure ? condition.bp : "----"}
-            </td>
           </tr>
         </tbody>
       </table>

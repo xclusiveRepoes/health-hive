@@ -17,7 +17,6 @@ const WellnessCheck = () => {
           emotional health.
         </p>
 
-        {/* Comprehensive Health Assessment */}
         <div className="mb-8">
           <h2 className="text-2xl font-semibold text-blue-500 mb-4">
             Comprehensive Health Assessment
@@ -34,10 +33,6 @@ const WellnessCheck = () => {
                   weight is in a healthy range.
                 </li>
                 <li>
-                  <strong>Blood Pressure:</strong> Monitor cardiovascular health
-                  by measuring systolic and diastolic pressure.
-                </li>
-                <li>
                   <strong>Diabetes Risk:</strong> Assess potential risks based
                   on blood sugar levels and lifestyle.
                 </li>
@@ -46,7 +41,6 @@ const WellnessCheck = () => {
           </ul>
         </div>
 
-        {/* Personalized Recommendations */}
         <div className="mb-8">
           <h2 className="text-2xl font-semibold text-blue-500 mb-4">
             Personalized Recommendations
@@ -94,7 +88,7 @@ const WellnessCheck = () => {
           </h2>
           <p className="text-gray-700 mb-4">
             Start your Wellness Check and gain personalized insights into your
-            BMI, blood pressure, and diabetes risk. Empower yourself with the
+            BMI, and diabetes risk. Empower yourself with the
             knowledge to lead a healthier, happier life.
           </p>
           <Link to={'/personalAssitant'}>

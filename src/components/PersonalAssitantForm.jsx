@@ -11,7 +11,6 @@ const PersonalAssitantForm = ({ isEditClicked, setIsEditClicked }) => {
   const [userDets, setUserDets] = useState({
     weight: "",
     height: "",
-    bloodPressure: "",
     sugarLevel: "",
     diabeticHistory: "",
   });
@@ -22,7 +21,6 @@ const PersonalAssitantForm = ({ isEditClicked, setIsEditClicked }) => {
       setUserDets({
         weight: userDetails.weight,
         height: userDetails.height,
-        bloodPressure: userDetails.bloodPressure,
         sugarLevel: userDetails.sugarLevel,
         diabeticHistory: userDetails.diabeticHistory,
       });
@@ -43,7 +41,6 @@ const PersonalAssitantForm = ({ isEditClicked, setIsEditClicked }) => {
       setUserDets({
         weight: "",
         height: "",
-        bloodPressure: "",
         sugarLevel: "",
         diabeticHistory: "",
       });
@@ -82,15 +79,6 @@ const PersonalAssitantForm = ({ isEditClicked, setIsEditClicked }) => {
           setUserDets((prev) => ({ ...prev, height: e.target.value }))
         }
         placeholder="Height (feet)"
-        className="bg-transparent border-b-[2px] border-gray-500 outline-none py-[4px] w-[100%] md:text-center"
-      />
-      <input
-        type="number"
-        value={userDets.bloodPressure}
-        onChange={(e) =>
-          setUserDets((prev) => ({ ...prev, bloodPressure: e.target.value }))
-        }
-        placeholder="Blood Pressure (optional)"
         className="bg-transparent border-b-[2px] border-gray-500 outline-none py-[4px] w-[100%] md:text-center"
       />
       <input

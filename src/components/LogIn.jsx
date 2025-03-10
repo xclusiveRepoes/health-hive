@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { FaEye } from "react-icons/fa";
