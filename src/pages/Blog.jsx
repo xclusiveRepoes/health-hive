@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Blog = () => {
     const data = [
@@ -9,25 +9,21 @@ const Blog = () => {
         {title: '5. Prioritize Quality Sleep', Desc: 'Aim for 7-9 hours of uninterrupted sleep. Create a bedtime routine, avoid screens before bed, and keep your sleeping environment calm and comfortable.'},
     ]
   return (
-    <div className='w-full flex flex-col items-center justify-center bg-[#0000ff16] backdrop-blur-md py-[40px]'>
-        <div className='flex items-center justify-center flex-col py-[20px]'>
-            <h1 className='text-[40px] font-[500] py-[0px]'>Health Tips</h1>
-            <h1 className='text-[25px] px-[15px]'>Five Daily Habits for Better Health:</h1>
+    <div className='w-full flex flex-col items-center justify-center bg-gradient-to-b from-blue-50 to-white py-16'>
+        <div className='text-center mb-8'>
+            <h1 className='text-4xl font-semibold text-gray-800'>Health Tips</h1>
+            <h2 className='text-xl text-gray-600 mt-2'>Five Daily Habits for Better Health</h2>
         </div>
-        <div className='w-full md:w-[80%] px-[20px] py-[20px] flex gap-[20px] flex-wrap justify-center'>
-            {
-                data.map((elem, index) => {
-                    return(
-                        <div key={index} className='w-[300px] h-[280px] shadow-xl rounded-md bg-[#cecece59] backdrop-blur-[20px] py-[18px]'>
-                            <h1 className='text-[22px] px-[20px]'>{elem.title}</h1>
-                            <p className='text-[16px] mt-[15px] px-[40px]'>{elem.Desc}</p>
-                        </div>
-                    )
-                })
-            }
+        <div className='w-full md:w-[80%] px-6 flex flex-wrap justify-center gap-8'>
+            {data.map((elem, index) => (
+                <div key={index} className='w-[320px] h-[210px] bg-white shadow-lg rounded-lg p-6 flex flex-col justify-between hover:scale-105 transition-all'>
+                    <h3 className='text-xl font-semibold text-blue-600'>{elem.title}</h3>
+                    <p className='text-gray-700 text-md mt-3'>{elem.Desc}</p>
+                </div>
+            ))}
         </div>
     </div>
-  )
+  );
 }
 
-export default Blog
+export default Blog;
