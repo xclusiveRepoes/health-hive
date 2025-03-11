@@ -54,6 +54,22 @@ const DietChart = () => {
       </div>
 
       <div className="border-2 border-gray-600 p-5 mb-5">
+        <h2 className="text-lg font-medium mb-3">🍛 Lunch</h2>
+        <table className="w-full border-2 border-gray-600 text-center">
+          <tbody>
+            <tr className="border-2 border-gray-600">
+              <td className="border-r-2 border-gray-600 w-1/3">Weight-Based</td>
+              <td>{userDetails.weight ? getWeightDiet().lunch : "----"}</td>
+            </tr>
+            <tr className="border-2 border-gray-600">
+              <td className="border-r-2 border-gray-600">Sugar Level-Based</td>
+              <td>{userDetails.sugarLevel ? getSugarDiet().lunch : "----"}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div className="border-2 border-gray-600 p-5 mb-5">
         <h2 className="text-lg font-medium mb-3">🍛 Snacks</h2>
         <table className="w-full border-2 border-gray-600 text-center">
           <tbody>
@@ -69,21 +85,6 @@ const DietChart = () => {
         </table>
       </div>
 
-      <div className="border-2 border-gray-600 p-5 mb-5">
-        <h2 className="text-lg font-medium mb-3">🍛 Lunch</h2>
-        <table className="w-full border-2 border-gray-600 text-center">
-          <tbody>
-            <tr className="border-2 border-gray-600">
-              <td className="border-r-2 border-gray-600 w-1/3">Weight-Based</td>
-              <td>{userDetails.weight ? getWeightDiet().lunch : "----"}</td>
-            </tr>
-            <tr className="border-2 border-gray-600">
-              <td className="border-r-2 border-gray-600">Sugar Level-Based</td>
-              <td>{userDetails.sugarLevel ? getSugarDiet().lunch : "----"}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
 
       <div className="border-2 border-gray-600 p-5">
         <h2 className="text-lg font-medium mb-3">🍽️ Dinner</h2>
