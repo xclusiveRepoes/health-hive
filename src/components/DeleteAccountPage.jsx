@@ -4,7 +4,7 @@ import { FaEye } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { getAuth, deleteUser, EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { logOut } from "../user/userSlice";
+import { isLoadingClicked, logOut } from "../user/userSlice";
 import { getFirestore, doc, deleteDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 
@@ -22,6 +22,7 @@ const DeleteAccount = () => {
 
   const handleDelete = async (e) => {
     e.preventDefault();
+    dispatch(isLoadingClicked())
 
     if (email === userData.email && password === userData.password) {
       if (!user) return;

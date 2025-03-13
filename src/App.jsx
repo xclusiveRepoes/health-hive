@@ -13,9 +13,9 @@ const App = () => {
   const {user, isLoading} = useSelector((state) => state.userSlice);
   return (
     <div className="bg-[#c8fcbe24] text-[#2C3E50] relative">
-      {
+      {/* {
         isLoading && <Loading />
-      }
+      } */}
       <Hero />
       {user.uid && (
         <div className="">

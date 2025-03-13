@@ -25,11 +25,13 @@ import ScrollToTop from "./ScrollToTop";
 import NavBar from "./components/NavBar";
 import SideNav from "./components/SideNav";
 import DeleteAccount from "./components/DeleteAccountPage";
+import Loading from "./components/Loading";
 
 const Pagination = () => {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.userSlice.user);
+  const {isLoading} = useSelector((state) => state.userSlice)
 
   const fetchUserData = async () => {
     auth.onAuthStateChanged(async (user) => {
@@ -49,6 +51,9 @@ const Pagination = () => {
 
   return (
     <div>
+      {
+        isLoading && <Loading />
+      }
       <BrowserRouter>
         {user?.uid && <NavBar />}
         {user?.uid && <SideNav />}
