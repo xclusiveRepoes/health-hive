@@ -3,7 +3,7 @@ import { db } from "../firebase-config";
 import { doc, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from "../user/userSlice";
+import { isLoadingClicked, updateUser } from "../user/userSlice";
 
 const PersonalAssitantForm = ({ isEditClicked, setIsEditClicked }) => {
   const dispatch = useDispatch();
@@ -29,6 +29,7 @@ const PersonalAssitantForm = ({ isEditClicked, setIsEditClicked }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch(isLoadingClicked())
     try {
       const userRef = doc(db, "Users", userDetails.uid);
       await updateDoc(userRef, { ...userDets });
