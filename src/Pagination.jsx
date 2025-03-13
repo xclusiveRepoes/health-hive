@@ -24,6 +24,7 @@ import { addUser } from "./user/userSlice";
 import ScrollToTop from "./ScrollToTop";
 import NavBar from "./components/NavBar";
 import SideNav from "./components/SideNav";
+import DeleteAccount from "./components/DeleteAccountPage";
 
 const Pagination = () => {
   const dispatch = useDispatch();
@@ -76,6 +77,7 @@ const Pagination = () => {
           <Route path="/login" element={<LogIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/personalAssitant" element={<PersonalAssitance />} />
+          <Route path="/deleteAccount" element={<DeleteAccount />} />
         </Routes>
       </BrowserRouter>
     </div>

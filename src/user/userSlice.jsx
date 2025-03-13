@@ -12,6 +12,8 @@ const userSlice = createSlice({
       diabeticHistory: "",
       idUpdated: false,
       uid: "",
+      email: '',
+      password: ''
     },
     isLoading: false,
     error: "",
@@ -27,6 +29,8 @@ const userSlice = createSlice({
         bloodPressure: action.payload.bloodPressure,
         sugarLevel: action.payload.sugarLevel,
         diabeticHistory: action.payload.diabeticHistory,
+        email: action.payload.email,
+        password: action.payload.password
       };
       state.isLoading = false;
       state.isUpdated = false;

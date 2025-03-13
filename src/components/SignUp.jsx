@@ -46,6 +46,7 @@ const SignUp = () => {
             bloodPressure: "",
             sugarLevel: "",
             diabeticHistory: "",
+            password: newUser.password
           });
           navigate('/logIn');
           dispatch(logOut())
