@@ -35,8 +35,8 @@ const HealthAnalysis = () => {
         ...prev,
         weightC: "Perfect Weight",
         bg: "bg-[#32CD32]",
-        haveTo: "Nothing",
-        acieve: Math.abs(weightToLoseOrGain).toFixed(2),
+        haveTo: "Nothing(to loss/to gain)",
+        acieve: 0,
       }));
     } else if (bmi >= 24.5 && bmi < 29.5) {
       setCondition((prev) => ({

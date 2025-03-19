@@ -30,7 +30,7 @@ const Hero = () => {
       return (
         <div className="mt-[130px] flex flex-col items-end sm:px-[20px]">
           <div className="z-10 hero px-[20px] md:px-[30px] text-end">
-            <h1 className="text-[white] text-[50px] sm:text-[60px] font-bold flex items-center justify-end leading-[.8]">
+            <h1 className="text-[white] text-[50px] flex-wrap sm:text-[60px] font-bold flex items-center justify-end leading-[.8]">
               <span className="italic mr-6">Hi</span>{" "}
               <span className="capitalize">{user.name}</span>
               <div className="hi origin-bottom-right inline-block text-[50px]">
@@ -41,7 +41,7 @@ const Hero = () => {
               Find the best diet for you
             </h1>
           </div>
-          <div className="z-10 px-[20px] py-[20px] flex gap-[1vw]">
+          <div className="z-10 px-[20px] py-[20px] flex gap-[1vw] flex-wrap items-end justify-end">
             <span >
               <Link to={'/deleteAccount'}><Delete /></Link>
             </span>
@@ -66,7 +66,7 @@ const Hero = () => {
               <span className="tracking-wider">Health</span>
             </h1>
           </div>
-          <div className="z-10 px-[20px] sm:px-[40px] py-[20px] flex gap-[1vw]">
+          <div className="z-10 px-[20px] sm:px-[40px] py-[20px] flex flex-wrap gap-[1vw]">
             <Button />
             <Button2 />
           </div>
