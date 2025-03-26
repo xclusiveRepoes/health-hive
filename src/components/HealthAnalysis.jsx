@@ -9,8 +9,8 @@ const HealthAnalysis = () => {
     haveTo: "",
     sugar: "",
     sugarColor: "",
-    bp: '',
-    bpColor: ''
+    bp: "",
+    bpColor: "",
   });
 
   let bmi =
@@ -56,38 +56,54 @@ const HealthAnalysis = () => {
       }));
     }
 
-    if (Number(userDetails.sugarLevel) < 4.4) {
-      setCondition((prev) => ({
-        ...prev,
-        sugar: "Low",
-        sugarColor: "bg-[#87CEEB]",
-      }));
-    } else if (
-      Number(userDetails.sugarLevel) >= 4.4 &&
-      Number(userDetails.sugarLevel) < 8
-    ) {
-      setCondition((prev) => ({
-        ...prev,
-        sugar: "Normal",
-        sugarColor: "bg-[#32CD32]",
-      }));
-    } else if (
-      Number(userDetails.sugarLevel) >= 8 &&
-      Number(userDetails.sugarLevel) < 11
-    ) {
-      setCondition((prev) => ({
-        ...prev,
-        sugar: "High",
-        sugarColor: "bg-[#FFA500]",
-      }));
-    }else if (
-      Number(userDetails.sugarLevel) >= 11
-    ) {
-      setCondition((prev) => ({
-        ...prev,
-        sugar: "High",
-        sugarColor: "bg-[#FF4500]",
-      }));
+    if (userDetails.beforeOrAfter === "after-meal") {
+      if (Number(userDetails.sugarLevel) < 5) {
+        setCondition((prev) => ({
+          ...prev,
+          sugar: "Low",
+          sugarColor: "bg-[#87CEEB]",
+        }));
+      } else if (
+        Number(userDetails.sugarLevel) >= 5 &&
+        Number(userDetails.sugarLevel) <= 7.8
+      ) {
+        setCondition((prev) => ({
+          ...prev,
+          sugar: "Normal",
+          sugarColor: "bg-[#32CD32]",
+        }));
+      } else if (Number(userDetails.sugarLevel) > 7.8) {
+        setCondition((prev) => ({
+          ...prev,
+          sugar: "High",
+          sugarColor: "bg-[#FFA500]",
+        }));
+      }
+    }
+
+    if (userDetails.beforeOrAfter === "before-meal") {
+      if (Number(userDetails.sugarLevel) < 3.9) {
+        setCondition((prev) => ({
+          ...prev,
+          sugar: "Low",
+          sugarColor: "bg-[#87CEEB]",
+        }));
+      } else if (
+        Number(userDetails.sugarLevel) >= 3.9 &&
+        Number(userDetails.sugarLevel) <= 5.5
+      ) {
+        setCondition((prev) => ({
+          ...prev,
+          sugar: "Normal",
+          sugarColor: "bg-[#32CD32]",
+        }));
+      } else if (Number(userDetails.sugarLevel) > 5.5) {
+        setCondition((prev) => ({
+          ...prev,
+          sugar: "High",
+          sugarColor: "bg-[#FFA500]",
+        }));
+      }
     }
   };
   useEffect(() => {
@@ -118,7 +134,9 @@ const HealthAnalysis = () => {
             <td className="border-r-[2px] border-gray-600 w-1/2">
               Sugar Level
             </td>
-            <td className={`${condition.sugarColor} text-white`}>{userDetails.sugarLevel ? condition.sugar : "----"}</td>
+            <td className={`${condition.sugarColor} text-white`}>
+              {userDetails.sugarLevel ? condition.sugar : "----"}
+            </td>
           </tr>
         </tbody>
       </table>

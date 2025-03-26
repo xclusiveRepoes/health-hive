@@ -12,10 +12,11 @@ const userSlice = createSlice({
       diabeticHistory: "",
       idUpdated: false,
       uid: "",
-      email: '',
-      password: ''
+      email: "",
+      password: "",
+      beforeOrAfter: "",
     },
-    isLoading: false,
+    isLoading: true,
     error: "",
   },
   reducers: {
@@ -30,7 +31,8 @@ const userSlice = createSlice({
         sugarLevel: action.payload.sugarLevel,
         diabeticHistory: action.payload.diabeticHistory,
         email: action.payload.email,
-        password: action.payload.password
+        password: action.payload.password,
+        beforeOrAfter: action.payload.beforeOrAfter,
       };
       state.isLoading = false;
       state.isUpdated = false;
@@ -45,6 +47,7 @@ const userSlice = createSlice({
         sugarLevel: "",
         diabeticHistory: "",
         uid: "",
+        beforeOrAfter: "",
       };
       state.isLoading = false;
       state.isUpdated = false;
@@ -57,6 +60,7 @@ const userSlice = createSlice({
         bloodPressure: action.payload.bloodPressure,
         sugarLevel: action.payload.sugarLevel,
         diabeticHistory: action.payload.diabeticHistory,
+        beforeOrAfter: action.payload.beforeOrAfter,
       };
       state.isLoading = false;
       state.isUpdated = true;
@@ -66,12 +70,12 @@ const userSlice = createSlice({
       state.isLoading = true;
     },
     isLoadingClicked: (state, action) => {
-      state.user = state.user,
-      state.isLoading = true
-    }
+      (state.user = state.user), (state.isLoading = true);
+    },
   },
 });
 
-export const { addUser, updateUser, logOut, logIn, isLoadingClicked } = userSlice.actions;
+export const { addUser, updateUser, logOut, logIn, isLoadingClicked } =
+  userSlice.actions;
 
 export default userSlice.reducer;

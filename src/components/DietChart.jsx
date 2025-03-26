@@ -26,10 +26,17 @@ const DietChart = () => {
   };
 
   const getSugarDiet = () => {
-    const sugar = Number(userDetails.sugarLevel);
-    if (sugar < 4.4) return lowSugar;
-    if (sugar >= 4.4 && sugar <= 7.8) return normalSugar;
-    return highSugar;
+    if (userDetails.beforeOrAfter === "before-meal") {
+      const sugar = Number(userDetails.sugarLevel);
+      if (sugar < 3.9) return lowSugar;
+      if (sugar >= 3.9 && sugar <= 5.5) return normalSugar;
+      return highSugar;
+    } else if (userDetails.beforeOrAfter === "after-meal") {
+      const sugar = Number(userDetails.sugarLevel);
+      if (sugar < 5) return lowSugar;
+      if (sugar >= 5 && sugar <= 7.8) return normalSugar;
+      return highSugar;
+    }
   };
 
   return (
@@ -84,7 +91,6 @@ const DietChart = () => {
           </tbody>
         </table>
       </div>
-
 
       <div className="border-2 border-gray-600 p-5">
         <h2 className="text-lg font-medium mb-3">🍽️ Dinner</h2>

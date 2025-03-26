@@ -13,6 +13,7 @@ const PersonalAssitantForm = ({ isEditClicked, setIsEditClicked }) => {
     height: "",
     sugarLevel: "",
     diabeticHistory: "",
+    beforeOrAfter: ""
   });
   const userDetails = useSelector((state) => state.userSlice.user);
 
@@ -23,13 +24,14 @@ const PersonalAssitantForm = ({ isEditClicked, setIsEditClicked }) => {
         height: userDetails.height,
         sugarLevel: userDetails.sugarLevel,
         diabeticHistory: userDetails.diabeticHistory,
+        beforeOrAfter: userDetails.beforeOrAfter
       });
     }
   }, [isEditClicked]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(isLoadingClicked())
+    dispatch(isLoadingClicked());
     try {
       const userRef = doc(db, "Users", userDetails.uid);
       await updateDoc(userRef, { ...userDets });
@@ -39,11 +41,13 @@ const PersonalAssitantForm = ({ isEditClicked, setIsEditClicked }) => {
         position: "top-center",
         autoClose: 3000,
       });
+      console.log(userDets);
       setUserDets({
         weight: "",
         height: "",
         sugarLevel: "",
         diabeticHistory: "",
+        beforeOrAfter: ""
       });
     } catch (error) {
       console.log(error);
@@ -70,7 +74,7 @@ const PersonalAssitantForm = ({ isEditClicked, setIsEditClicked }) => {
           setUserDets((prev) => ({ ...prev, weight: e.target.value }))
         }
         placeholder="Weight (kg)"
-        className="bg-transparent border-b-[2px] border-gray-500 outline-none py-[4px] w-[100%] md:text-center"
+        className="bg-transparent border-b-[2px] border-gray-500 outline-none py-[4px] w-[100%]"
       />
       <input
         type="number"
@@ -80,17 +84,59 @@ const PersonalAssitantForm = ({ isEditClicked, setIsEditClicked }) => {
           setUserDets((prev) => ({ ...prev, height: e.target.value }))
         }
         placeholder="Height (feet)"
-        className="bg-transparent border-b-[2px] border-gray-500 outline-none py-[4px] w-[100%] md:text-center"
+        className="bg-transparent border-b-[2px] border-gray-500 outline-none py-[4px] w-[100%]"
       />
-      <input
-        type="number"
-        value={userDets.sugarLevel}
-        onChange={(e) =>
-          setUserDets((prev) => ({ ...prev, sugarLevel: e.target.value }))
-        }
-        placeholder="Sugar Level (2 hours after meal) (optional)"
-        className="bg-transparent border-b-[2px] border-gray-500 outline-none py-[4px] w-[100%] md:text-center"
-      />
+      <div className="w-full flex items-center justify-between">
+        <input
+          type="number"
+          value={userDets.sugarLevel}
+          onChange={(e) =>
+            setUserDets((prev) => ({ ...prev, sugarLevel: e.target.value }))
+          }
+          placeholder="Sugar Level(optional)"
+          className="bg-transparent border-b-[2px] border-gray-500 outline-none w-[45%] md:w-[calc(100%-290px)] py-[4px]"
+        />
+        <div className="w-[85%] sm:w-[50%] md:w-[280px] justify-around flex">
+          <div className="">
+            <input
+              required
+              type="radio"
+              className=""
+              id="before-meal"
+              name="beforeOrAfter"
+              value="before-meal"
+              onChange={(e) =>
+                setUserDets((prev) => ({
+                  ...prev,
+                  beforeOrAfter: e.target.value,
+                }))
+              }
+            />
+            <label htmlFor="before-meal" className="">
+              Before Meal
+            </label>
+          </div>
+          <div>
+            <input
+              required
+              type="radio"
+              className=""
+              id="after-meal"
+              name="beforeOrAfter"
+              value="after-meal"
+              onChange={(e) =>
+                setUserDets((prev) => ({
+                  ...prev,
+                  beforeOrAfter: e.target.value,
+                }))
+              }
+            />
+            <label htmlFor="after-meal" className=" ">
+              After Meal
+            </label>
+          </div>
+        </div>
+      </div>
       <div className="mt-[10px]">
         <label htmlFor="">Family Diabetic History</label>
         <div>
