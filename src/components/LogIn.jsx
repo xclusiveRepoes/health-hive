@@ -8,7 +8,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import { toast } from 'react-toastify'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
-import { addUser, logIn } from '../user/userSlice'
+import { addUser, isLoadingFalse, logIn } from '../user/userSlice'
 import { doc, getDoc } from 'firebase/firestore';
 const login = () => {
   const [user, setUser] = useState({
@@ -28,6 +28,9 @@ const login = () => {
           if (docSnap.exists()) {
             dispatch(addUser(docSnap.data()));
           }
+        }
+        else{
+          dispatch(isLoadingFalse())
         }
       });
     };

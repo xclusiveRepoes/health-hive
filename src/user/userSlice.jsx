@@ -72,10 +72,13 @@ const userSlice = createSlice({
     isLoadingClicked: (state, action) => {
       (state.user = state.user), (state.isLoading = true);
     },
+    isLoadingFalse: (state, action) => {
+      (state.user = state.user), (state.isLoading = false);
+    },
   },
 });
 
-export const { addUser, updateUser, logOut, logIn, isLoadingClicked } =
+export const { addUser, updateUser, logOut, logIn, isLoadingClicked, isLoadingFalse } =
   userSlice.actions;
 
 export default userSlice.reducer;

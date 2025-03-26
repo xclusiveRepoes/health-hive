@@ -11,7 +11,7 @@ import { logOut } from "../user/userSlice";
 import Delete from "../components/Delete";
 
 const Hero = () => {
-  const { user, isLoading } = useSelector((state) => state.userSlice);
+  const { user } = useSelector((state) => state.userSlice);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

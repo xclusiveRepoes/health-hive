@@ -20,7 +20,7 @@ import PersonalAssitance from "./Subpages/PersonalAssitance";
 import { useDispatch, useSelector } from "react-redux";
 import { auth, db } from "./firebase-config";
 import { doc, getDoc } from "firebase/firestore";
-import { addUser } from "./user/userSlice";
+import { addUser, isLoadingFalse } from "./user/userSlice";
 import ScrollToTop from "./ScrollToTop";
 import NavBar from "./components/NavBar";
 import SideNav from "./components/SideNav";
@@ -41,6 +41,9 @@ const Pagination = () => {
         if (docSnap.exists()) {
           dispatch(addUser(docSnap.data()));
         }
+      }
+      else{
+        dispatch(isLoadingFalse())
       }
     });
   };
