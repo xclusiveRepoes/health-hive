@@ -13,7 +13,7 @@ const PersonalAssitantForm = ({ isEditClicked, setIsEditClicked }) => {
     height: "",
     sugarLevel: "",
     diabeticHistory: "",
-    beforeOrAfter: ""
+    beforeOrAfter: "",
   });
   const userDetails = useSelector((state) => state.userSlice.user);
 
@@ -24,7 +24,7 @@ const PersonalAssitantForm = ({ isEditClicked, setIsEditClicked }) => {
         height: userDetails.height,
         sugarLevel: userDetails.sugarLevel,
         diabeticHistory: userDetails.diabeticHistory,
-        beforeOrAfter: userDetails.beforeOrAfter
+        beforeOrAfter: userDetails.beforeOrAfter,
       });
     }
   }, [isEditClicked]);
@@ -47,7 +47,7 @@ const PersonalAssitantForm = ({ isEditClicked, setIsEditClicked }) => {
         height: "",
         sugarLevel: "",
         diabeticHistory: "",
-        beforeOrAfter: ""
+        beforeOrAfter: "",
       });
     } catch (error) {
       console.log(error);
@@ -94,48 +94,50 @@ const PersonalAssitantForm = ({ isEditClicked, setIsEditClicked }) => {
             setUserDets((prev) => ({ ...prev, sugarLevel: e.target.value }))
           }
           placeholder="Sugar Level(optional)"
-          className="bg-transparent border-b-[2px] border-gray-500 outline-none w-[45%] md:w-[calc(100%-290px)] py-[4px]"
+          className={`bg-transparent border-b-[2px] border-gray-500 outline-none ${userDets.sugarLevel ? 'w-[45%] md:w-[calc(100%-290px)] ' : 'w-full'} py-[4px]`}
         />
-        <div className="w-[85%] sm:w-[50%] md:w-[280px] justify-around flex">
-          <div className="">
-            <input
-              required
-              type="radio"
-              className=""
-              id="before-meal"
-              name="beforeOrAfter"
-              value="before-meal"
-              onChange={(e) =>
-                setUserDets((prev) => ({
-                  ...prev,
-                  beforeOrAfter: e.target.value,
-                }))
-              }
-            />
-            <label htmlFor="before-meal" className="">
-              Before Meal
-            </label>
+        {userDets.sugarLevel && (
+          <div className="w-[85%] sm:w-[50%] md:w-[280px] justify-around flex">
+            <div className="">
+              <input
+                required
+                type="radio"
+                className=""
+                id="before-meal"
+                name="beforeOrAfter"
+                value="before-meal"
+                onChange={(e) =>
+                  setUserDets((prev) => ({
+                    ...prev,
+                    beforeOrAfter: e.target.value,
+                  }))
+                }
+              />
+              <label htmlFor="before-meal" className="">
+                Before Meal
+              </label>
+            </div>
+            <div>
+              <input
+                required
+                type="radio"
+                className=""
+                id="after-meal"
+                name="beforeOrAfter"
+                value="after-meal"
+                onChange={(e) =>
+                  setUserDets((prev) => ({
+                    ...prev,
+                    beforeOrAfter: e.target.value,
+                  }))
+                }
+              />
+              <label htmlFor="after-meal" className=" ">
+                After Meal
+              </label>
+            </div>
           </div>
-          <div>
-            <input
-              required
-              type="radio"
-              className=""
-              id="after-meal"
-              name="beforeOrAfter"
-              value="after-meal"
-              onChange={(e) =>
-                setUserDets((prev) => ({
-                  ...prev,
-                  beforeOrAfter: e.target.value,
-                }))
-              }
-            />
-            <label htmlFor="after-meal" className=" ">
-              After Meal
-            </label>
-          </div>
-        </div>
+        )}
       </div>
       <div className="mt-[10px]">
         <label htmlFor="">Family Diabetic History</label>

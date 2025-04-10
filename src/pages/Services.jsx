@@ -24,7 +24,7 @@ const Services = () => {
                 data.map((elem, index) => {
                     return(
                         <Link key={index} to={elem.path} >
-                            <div className='w-[330px] h-[370px] cursor-pointer border flex flex-col gap-[15px] shadow-md rounded-xl overflow-hidden'>
+                            <div className='w-[330px] h-[370px] cursor-pointer border flex flex-col gap-[15px] shadow-md rounded-xl overflow-hidden hover:scale-[1.02] ease-in-out duration-100'>
                                 <div className='w-full h-[60%]'>
                                     <img src={elem.src} className='h-[100%] w-[100%]' alt="" />
                                 </div>
