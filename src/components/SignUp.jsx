@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { isLoadingClicked, logOut } from "../user/userSlice";
+import { isLoadingClicked, isLoadingFalse, logOut } from "../user/userSlice";
 
 const SignUp = () => {
   const [newUser, setNewUser] = useState({
@@ -53,8 +53,12 @@ const SignUp = () => {
           navigate('/logIn');
           dispatch(logOut())
         }
+        else{
+          dispatch(isLoadingFalse())
+        }
       } catch (err) {
         console.error(err);
+        dispatch(isLoadingFalse())
         toast.error("Something went wrong. Try again!", {
           position: "top-center",
           autoClose: 3000,

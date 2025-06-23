@@ -31,21 +31,32 @@ const Pagination = () => {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.userSlice.user);
-  const {isLoading} = useSelector((state) => state.userSlice)
+  const { isLoading } = useSelector((state) => state.userSlice);
+  console.log(isLoading);
 
   const fetchUserData = async () => {
-    auth.onAuthStateChanged(async (user) => {
-      if (user) {
-        const docRef = doc(db, "Users", user.uid);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          dispatch(addUser(docSnap.data()));
+    try {
+      auth.onAuthStateChanged(async (user) => {
+        if (user) {
+          try {
+            const docRef = doc(db, "Users", user.uid);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+              dispatch(addUser(docSnap.data()));
+            }
+            dispatch(isLoadingFalse()); // call even if user exists
+          } catch (error) {
+            console.error("Error fetching user data:", error);
+            dispatch(isLoadingFalse());
+          }
+        } else {
+          dispatch(isLoadingFalse());
         }
-      }
-      else{
-        dispatch(isLoadingFalse())
-      }
-    });
+      });
+    } catch (error) {
+      console.error("Auth state change error:", error);
+      dispatch(isLoadingFalse());
+    }
   };
 
   useEffect(() => {
@@ -54,9 +65,7 @@ const Pagination = () => {
 
   return (
     <div>
-      {
-        isLoading && <Loading />
-      }
+      {isLoading && <Loading />}
       <BrowserRouter>
         {user?.uid && <NavBar />}
         {user?.uid && <SideNav />}
