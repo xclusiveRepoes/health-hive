@@ -20,20 +20,25 @@ const login = () => {
 
   const [isClick, setIsClick] = useState(false)
 
-    const fetchUserData = async () => {
-      auth.onAuthStateChanged(async (user) => {
-        if (user) {
-          const docRef = doc(db, "Users", user.uid);
-          const docSnap = await getDoc(docRef);
-          if (docSnap.exists()) {
-            dispatch(addUser(docSnap.data()));
-          }
+const fetchUserData = async () => {
+  auth.onAuthStateChanged(async (user) => {
+    if (user) {
+      try {
+        const docRef = doc(db, "Users", user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          dispatch(addUser(docSnap.data()));
         }
-        else{
-          dispatch(isLoadingFalse())
-        }
-      });
-    };
+        dispatch(isLoadingFalse());
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        dispatch(isLoadingFalse());
+      }
+    } else {
+      dispatch(isLoadingFalse());
+    }
+  });
+};
 
   
   const handleSubmit = async (e) => {
