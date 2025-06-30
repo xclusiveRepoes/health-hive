@@ -180,7 +180,7 @@ const PersonalAssitantForm = ({ isEditClicked, setIsEditClicked }) => {
       </div>
       <button
         type="submit"
-        className="bg-blue-700 text-[white] py-[5px] rounded-md mt-[10px] font-medium"
+        className="bg-blue-700 hover:bg-blue-800 transition-colors duration-200 text-[white] py-[5px] rounded-md mt-[10px] font-medium"
       >
         Submit
       </button>

@@ -26,13 +26,14 @@ import NavBar from "./components/NavBar";
 import SideNav from "./components/SideNav";
 import DeleteAccount from "./components/DeleteAccountPage";
 import Loading from "./components/Loading";
+import DietChart from "./components/DietChart";
+import PersonalizedWorkout from "./components/PersonalizedWorkout";
 
 const Pagination = () => {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.userSlice.user);
   const { isLoading } = useSelector((state) => state.userSlice);
-  console.log(isLoading);
 
   const fetchUserData = async () => {
     try {
@@ -95,6 +96,8 @@ const Pagination = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/personalAssitant" element={<PersonalAssitance />} />
           <Route path="/deleteAccount" element={<DeleteAccount />} />
+          <Route path="/diet-chart" element={<DietChart />} />
+          <Route path="/personalized-workout" element={<PersonalizedWorkout />} />
         </Routes>
       </BrowserRouter>
     </div>

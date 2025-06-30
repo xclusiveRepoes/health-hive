@@ -24,13 +24,13 @@ const Services = () => {
                 data.map((elem, index) => {
                     return(
                         <Link key={index} to={elem.path} >
-                            <div className='w-[330px] h-[370px] cursor-pointer border flex flex-col gap-[15px] shadow-md rounded-xl overflow-hidden hover:scale-[1.02] ease-in-out duration-100'>
+                            <div className='w-[300px] sm:w-[330px] h-[390px] cursor-pointer border flex flex-col gap-[15px] shadow-md rounded-xl overflow-hidden hover:scale-[1.02] ease-in-out duration-100'>
                                 <div className='w-full h-[60%]'>
                                     <img src={elem.src} className='h-[100%] w-[100%]' alt="" />
                                 </div>
-                                <div className='w-full h-[40%] flex flex-col gap-[10px] px-[15px]'>
+                                <div className='w-full h-[40%] flex flex-col gap-[10px] px-[15px] pb-[20px]'>
                                     <h1 className='text-[20px]  font-[600] leading-[1.1]'>{elem.title}</h1> 
-                                    <p className=' text-[13px]'>{elem.desc}</p>
+                                    <article className=' text-[13px] overflow-auto'>{elem.desc}</article>
                                 </div>
                             </div>
                         </Link>

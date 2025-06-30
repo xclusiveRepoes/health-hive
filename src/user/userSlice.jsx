@@ -18,6 +18,8 @@ const userSlice = createSlice({
     },
     isLoading: true,
     error: "",
+    isShowExersiseImg: false,
+    imgLink: "",
   },
   reducers: {
     addUser: (state, action) => {
@@ -75,10 +77,21 @@ const userSlice = createSlice({
     isLoadingFalse: (state, action) => {
       (state.user = state.user), (state.isLoading = false);
     },
+    exerciseImageHandle: (state, action) => {
+      (state.isShowExersiseImg = action.payload.isEnter),
+        (state.imgLink = action.payload.img);
+    },
   },
 });
 
-export const { addUser, updateUser, logOut, logIn, isLoadingClicked, isLoadingFalse } =
-  userSlice.actions;
+export const {
+  addUser,
+  updateUser,
+  logOut,
+  logIn,
+  isLoadingClicked,
+  isLoadingFalse,
+  exerciseImageHandle,
+} = userSlice.actions;
 
 export default userSlice.reducer;

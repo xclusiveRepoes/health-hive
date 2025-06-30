@@ -18,7 +18,7 @@ const Blog = () => {
             {data.map((elem, index) => (
                 <div key={index} className='w-[320px] h-[210px] bg-white shadow-lg rounded-lg p-6 flex flex-col justify-between hover:scale-105 transition-all'>
                     <h3 className='text-xl font-semibold text-blue-600'>{elem.title}</h3>
-                    <p className='text-gray-700 text-md mt-3'>{elem.Desc}</p>
+                    <article className='text-gray-700 text-md mt-3 overflow-auto'>{elem.Desc}</article>
                 </div>
             ))}
         </div>

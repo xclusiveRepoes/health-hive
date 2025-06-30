@@ -67,7 +67,7 @@ const PersonalDetsShowcase = ({ handleEdit }) => {
           </table>
           <button
             onClick={handleClick}
-            className="w-full bg-gray-500 mt-[20px] py-[6px] font-medium text-white rounded-md"
+            className="w-full bg-gray-500 hover:bg-gray-600 transition-colors duration-200 mt-[20px] py-[6px] font-medium text-white rounded-md"
           >
             Edit
           </button>

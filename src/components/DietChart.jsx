@@ -40,9 +40,9 @@ const DietChart = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full pt-[80px] px-[10px] sm:px-[40px] py-[20px]">
       <h1 className="py-5 text-xl font-semibold text-center">Diet Chart</h1>
-      <div className="border-2 border-gray-600 p-5 mb-5">
+      <div className="border-2 border-gray-600 p-1 md:p-5 mb-5">
         <h2 className="text-lg font-medium mb-3">🍳 Breakfast</h2>
         <table className="w-full border-2 border-gray-600 text-center">
           <tbody>
@@ -60,7 +60,7 @@ const DietChart = () => {
         </table>
       </div>
 
-      <div className="border-2 border-gray-600 p-5 mb-5">
+      <div className="border-2 border-gray-600 md:p-5 p-1 mb-5">
         <h2 className="text-lg font-medium mb-3">🍛 Lunch</h2>
         <table className="w-full border-2 border-gray-600 text-center">
           <tbody>
@@ -76,7 +76,7 @@ const DietChart = () => {
         </table>
       </div>
 
-      <div className="border-2 border-gray-600 p-5 mb-5">
+      <div className="border-2 border-gray-600 p-1 md:p-5 mb-5">
         <h2 className="text-lg font-medium mb-3">🍛 Snacks</h2>
         <table className="w-full border-2 border-gray-600 text-center">
           <tbody>
@@ -92,7 +92,7 @@ const DietChart = () => {
         </table>
       </div>
 
-      <div className="border-2 border-gray-600 p-5">
+      <div className="border-2 border-gray-600 p-1 md:p-5">
         <h2 className="text-lg font-medium mb-3">🍽️ Dinner</h2>
         <table className="w-full border-2 border-gray-600 text-center">
           <tbody>
