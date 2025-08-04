@@ -15,11 +15,14 @@ const userSlice = createSlice({
       email: "",
       password: "",
       beforeOrAfter: "",
+      age: ''
     },
     isLoading: true,
     error: "",
     isShowExersiseImg: false,
     imgLink: "",
+    weightCondition: "",
+    sugarCondition: "",
   },
   reducers: {
     addUser: (state, action) => {
@@ -35,6 +38,7 @@ const userSlice = createSlice({
         email: action.payload.email,
         password: action.payload.password,
         beforeOrAfter: action.payload.beforeOrAfter,
+        age: action.payload.age
       };
       state.isLoading = false;
       state.isUpdated = false;
@@ -81,6 +85,10 @@ const userSlice = createSlice({
       (state.isShowExersiseImg = action.payload.isEnter),
         (state.imgLink = action.payload.img);
     },
+    addWeightAndSugarCondition: (state, action) => {
+      (state.weightCondition = action.payload.weight),
+        (state.sugarCondition = action.payload.sugarC);
+    },
   },
 });
 
@@ -92,6 +100,7 @@ export const {
   isLoadingClicked,
   isLoadingFalse,
   exerciseImageHandle,
+  addWeightAndSugarCondition,
 } = userSlice.actions;
 
 export default userSlice.reducer;

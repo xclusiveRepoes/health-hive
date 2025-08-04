@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addWeightAndSugarCondition } from "../user/userSlice";
 
 const HealthAnalysis = () => {
   const userDetails = useSelector((state) => state.userSlice.user);
+  const dispatch = useDispatch()
   const [condition, setCondition] = useState({
     weightC: "",
     bg: "",
@@ -12,6 +14,10 @@ const HealthAnalysis = () => {
     bp: "",
     bpColor: "",
   });
+
+  useEffect(() => {
+    dispatch(addWeightAndSugarCondition({weight: condition.weightC, sugarC: condition.sugar}))
+  }, [condition.weightC, condition.sugar])
 
   let bmi =
     Number(userDetails.weight) / (Number(userDetails.height) * 0.3048) ** 2;
