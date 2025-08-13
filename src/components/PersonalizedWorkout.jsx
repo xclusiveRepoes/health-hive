@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import WorkOutChart from "./WorkOutChart";
 import {
-  Exercises,
   mediumAgeOverWeightHighSugar,
   mediumAgeHighSugarLowWeight,
   overAgeOverWeightHighSugar,
@@ -94,7 +93,7 @@ const PersonalizedWorkout = () => {
                       className="px-4 py-2"
                       style={{ backgroundColor: elem.color }}
                     >
-                      {elem.value}
+                      {elem.displayValue}
                     </td>
                   </tr>
                 ))}
